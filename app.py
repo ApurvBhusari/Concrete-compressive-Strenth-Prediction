@@ -1,3 +1,5 @@
+from wsgiref import simple_server
+
 import joblib
 import numpy as np
 import pandas as pd
@@ -49,7 +51,11 @@ def predict():
 
         return render_template('index.html',
                   prediction_text=f"The Concrete compressive strength is {result} MPa")
-
-
+import os
+port = int(os.getenv("PORT",5001))
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    host = '0.0.0.0'
+    httpd = simple_server.make_server(host=host,port=port,app=app)
+    httpd.serve_forever()
+
