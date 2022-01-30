@@ -32,7 +32,8 @@ Deployed on web using Heroku (PaaS) url:- https://cementstrengthpred1.herokuapp.
 We used Circle-CI and Docker hub for Contineous Integration and Contineous Development.
 
 # Screenshots
-![deploy](https://user-images.githubusercontent.com/76841427/150670336-d0ec8926-1a62-4722-af15-7cc5ddc201aa.PNG)
+![CCSP_web](https://user-images.githubusercontent.com/76841427/151688699-95fa1f1d-7878-45d5-8826-162311bf7e0a.PNG)
+
 
 # Tools and technologies used
 ![tech](https://user-images.githubusercontent.com/76841427/150670346-b5775fd4-f4b3-4731-aa19-c9ec03bc5443.PNG)
