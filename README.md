@@ -26,7 +26,7 @@ At each step in both development and deployment parts, logging operation is perf
 So, now we can find the Concrete compressive strength quickly by just passing the quantities of the raw materials as an input to the web application 😊.
 
 # Web Deployment
-Deployed on web using Heroku (PaaS) url:- https://ccs-predictor.herokuapp.com/
+Deployed on web using Heroku (PaaS) url:- https://cementstrengthpred1.herokuapp.com/
 
 # CICD Pipeline
 We used Circle-CI and Docker hub for Contineous Integration and Contineous Development.
