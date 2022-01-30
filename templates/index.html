@@ -44,7 +44,7 @@
 
         </style>
 </style>
-<body background="{{url_for('static',filename='Brick.jpg') }}" >
+<body  >
 
 <h1 style="color:white; margin-top: 40px;margin-left: 200px;font-size: 32; text-align: left; font-weight: bold; font-colo"><u>Concrete Compressive Strength Predictor</u></h1>
 
@@ -74,9 +74,9 @@
     <label for="blast_furnace_slag" class ="label"> <b>Blast furnace slag (in kg) :</b> </label>
     <input type = "number" step = "0.01" id = "blast_furnace_slag" name = "bfs" placeholder = "quantity " required = "required" style="height:30px;font-size:14pt;"/>
     <br>
-
+<br>
     <button type="submit" style ="margin-left: 24px;" class ="button" >  Predict  </button>
-    <br><br><br>
+    <br>
     <div ><b><h2> {{prediction_text }} </h2></b></div>
 
     <br><br>
