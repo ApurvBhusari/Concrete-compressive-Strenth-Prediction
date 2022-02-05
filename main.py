@@ -4,7 +4,6 @@ from algo.LinearModels import LinearRegressionWithFeatureSelection
 from algo.TreeModels import TreeModelsReg
 from algo.BoostingModels import BoostingModelReg
 
-
 import pandas as pd
 import warnings
 import joblib
@@ -74,13 +73,14 @@ def rec_imp_features(dataframe, algorithm_name, imp_features):
     try:
         dataframe.loc[len(dataframe)] = [algorithm_name, imp_features]
 
-        logger.add_info_log(f"Important features of the {algorithm_name} updated in the 'relevant_features_by_models.csv' ")
+        logger.add_info_log(
+            f"Important features of the {algorithm_name} updated in the 'relevant_features_by_models.csv' ")
 
         return dataframe.to_csv('results/relevant_features_by_models.csv', index=False)
 
     except Exception as e:
         logger.add_exception_log("Exception occurred in the function 'rec_imp_features'. "
-                      "Exception message: " + str(e))
+                                 "Exception message: " + str(e))
 
 
 rec_imp_features(imp_f, "Linear Regression_BE", relevant_features_by_BE)
@@ -97,7 +97,8 @@ algo_results = pd.DataFrame(columns=['Algorithm', 'Train_R2 score', 'Train_Adj_R
 logger.add_info_log(
     'Created a blank data frame "algo_results" to store the results of each and every model')  # logging operation
 
-logger.add_exception_log('Defining a function "evaluate" to evaluate the performance metrics of a model')  # logging operation
+logger.add_exception_log(
+    'Defining a function "evaluate" to evaluate the performance metrics of a model')  # logging operation
 
 
 def evaluate(dataframe, algorithm_name,
@@ -134,7 +135,7 @@ def evaluate(dataframe, algorithm_name,
 
     except Exception as e:
         logger.add_exception_log("Exception occurred in the function 'evaluate'. "
-                      "Exception message: " + str(e))
+                                 "Exception message: " + str(e))
 
 
 evaluate(algo_results, 'Linear Regression_BE',
@@ -155,7 +156,6 @@ evaluate(algo_results, 'Linear Regression_RFE',
          X_train_rfe, y_train, y_pred_train_rfe,
          X_test_rfe, y_test, y_pred_test_rfe)  # calling the function "evaluate" to store the results into .csv file
 
-
 """ 2) Linear regression with RFE approach """
 
 lr_rfe, X_train_rfe, y_pred_train_rfe, X_test_rfe, y_pred_test_rfe, relevant_features_by_RFE = lr.rfe_approach()
@@ -173,7 +173,7 @@ evaluate(algo_results, 'Linear Regression_RFE',
 """ 3) Linear regression with LassoCV approach """
 ls = LinearRegressionWithFeatureSelection(X_train, y_train, X_test, y_test)
 
-  # An object which is responsible for building Linear regression models with Lasso regularization.
+# An object which is responsible for building Linear regression models with Lasso regularization.
 
 lr_lasso, X_train_lasso, y_pred_train_lasso, X_test_lasso, y_pred_test_lasso = ls.lassocv()  # Linear regression model and predictions of both the train and test data respectively
 
@@ -186,7 +186,8 @@ rec_imp_features(imp_f, "Linear Regression_Lasso",
 
 evaluate(algo_results, 'Linear Regression_Lasso',
          X_train_lasso, y_train, y_pred_train_lasso,
-         X_test_lasso, y_test, y_pred_test_lasso)  # calling the function "evaluate" to store the results into local disk
+         X_test_lasso, y_test,
+         y_pred_test_lasso)  # calling the function "evaluate" to store the results into local disk
 
 """As per the results, in the "Experiments with algorithms.csv", all the 3 approaches of linear regression
 delivering the similar results. Linear Regression_RFE approach is having very low rmse score on the test set, 
@@ -313,7 +314,7 @@ evaluate(algo_results, 'Random Forest regressor',
 """ 3) AdaBoost Regressor """
 
 b = BoostingModelReg(X_train, y_train, X_test, y_test,
-                  )  # An object which is responsible for building tree based models
+                     )  # An object which is responsible for building tree based models
 
 # logging operation
 logger.add_info_log(
@@ -330,7 +331,7 @@ X_train_adb = X_train[top_features_adb]  # considering only the relevant feature
 X_test_adb = X_test[top_features_adb]
 
 b = BoostingModelReg(X_train_adb, y_train, X_test_adb, y_test,
-                  )  # An object which is responsible for building tree based models)
+                     )  # An object which is responsible for building tree based models)
 
 logger.add_info_log(
     "Building an Adaboost regressor model on the training data with the relevant features only.")
@@ -353,7 +354,7 @@ evaluate(algo_results, 'Adaboost regressor',
 """ 4) Gradient Boosting Regressor """
 
 b = BoostingModelReg(X_train, y_train, X_test, y_test,
-                  )  # An object which is responsible for building tree based models
+                     )  # An object which is responsible for building tree based models
 
 # logging operation
 logger.add_info_log(
@@ -369,7 +370,7 @@ X_train_gbr = X_train[top_features_gbr]  # considering only the relevant feature
 X_test_gbr = X_test[top_features_gbr]
 
 b = BoostingModelReg(X_train_gbr, y_train, X_test_gbr, y_test,
-                  )  # An object which is responsible for building tree based models)
+                     )  # An object which is responsible for building tree based models)
 
 # logging operation
 logger.add_info_log("Building a Gradient Boosting regressor model on the training data with the relevant features only")
@@ -393,7 +394,7 @@ evaluate(algo_results, 'Gradient Boost regressor',
 """ 5) XGBoost Regressor """
 
 xg = BoostingModelReg(X_train, y_train, X_test, y_test,
-                  )  # An object which is responsible for building tree based models
+                      )  # An object which is responsible for building tree based models
 
 # logging operation
 logger.add_info_log(
@@ -411,7 +412,7 @@ X_train_xgbr = X_train[top_features_xgbr]  # considering only the relevant featu
 X_test_xgbr = X_test[top_features_xgbr]
 
 xg = BoostingModelReg(X_train_xgbr, y_train, X_test_xgbr, y_test,
-                  )  # An object which is responsible for building tree based models)
+                      )  # An object which is responsible for building tree based models)
 
 # logging operation
 logger.add_info_log("Building an XGBoost regressor model on the training data with the relevant features only. ")
@@ -446,8 +447,6 @@ logger.add_info_log('Saving the Random Forest regressor model into the "models" 
 joblib.dump(rf_model_2, 'models\RandomForest_Regressor_model.pkl')
 
 logger.add_info_log(" Solution development part completed successfully. Thank you _/\_ , Stay safe and healthy :-) ")
-
-
 
 if __name__ == '__main__':
     pass

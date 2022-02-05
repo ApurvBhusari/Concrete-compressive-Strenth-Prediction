@@ -45,7 +45,7 @@ def predict():
         #         logging.info(f"The Predicted Concrete Compressive strength is {result} MPa")
 
         #         logging.info("Prediction getting posted to the web page.")
-        prediction = f"The Concrete compressive strength is {result} MPa"
+        #prediction = f"The Concrete compressive strength is {result} MPa"
 
         return render_template('index.html',
                                prediction_text=f"The Concrete compressive strength is {result} MPa")
