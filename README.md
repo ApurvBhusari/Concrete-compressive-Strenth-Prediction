@@ -13,6 +13,21 @@ Visualized each predictor or independent feature with the target feature and fou
 To get even more better insights, plotted both Pearson and Spearman correlations, which showed the same results as above.
 Checked for the presence of outliers in all the columns and found that the column 'age' is having more no. of outliers. Removed outliers using IQR technique.
 
+# HLD Document :
+https://docs.google.com/document/d/1hJ2fN55fB0LQE2Z3edBhyiob0HaTkeAXjdhZzDsMUmM/edit?usp=sharing
+
+# LLD Document :
+https://docs.google.com/document/d/1AvLR2dsaIFPTEKytPelyU8iAIkykC4ocMGD-ACUBoJ4/edit?usp=sharing
+
+# Wireframe Document 
+https://docs.google.com/document/d/1DqR23L5YcO-oWc2HGKL0ijOUWT_KC087Rj6L_7pF3J8/edit?usp=sharing
+
+# Architecture Document
+https://docs.google.com/document/d/1Y1WUBBOcpdVkVbYaSotBbiYr9sw0iqyIEMGQEJmtnds/edit?usp=sharing
+
+# Project Detail Report 
+https://docs.google.com/presentation/d/1EKgmOfRlYFAl9mbScR4JFLY7UnKjZZrTqEVwKAKG32Q/edit?usp=sharing
+
 # Experimenting with various ML algorithms:
 First, tried with Linear regression models and feature selection using Backward elimination, RFE and the LassoCV approaches. Stored the important features found by each model into "relevant_features_by_models.csv" file into the "results" directory. Performance metrics are calculated for all the three approaches and recorded in the "Performance of algorithms.csv" file in the "results" directory. Even though all the three approaches delivered similar performance, I chose RFE approach, as the test RMSE score is little bit lesser compared to other approaches. Then, performed a residual analysis and the model satisfied all the assumptions of linear regression. But the disadvantage is, model showed slight underfitting.
 
